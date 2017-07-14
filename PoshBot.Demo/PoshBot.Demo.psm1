@@ -590,3 +590,14 @@ function Regex-Test {
 function Get-Version {
     Write-Output "I'm version $((Get-Module PoshBot.Demo).Version.ToString())"
 }
+
+function Get-CredentialTest {
+    [cmdletbinding()]
+    param(
+        [PoshBot.FromConfig('Credential')]
+        [parameter(Mandatory)]
+        [pscredential]$Credential
+    )
+
+    Write-Output "Credential [$($Credential.UserName)] passed in from plugin configuration"
+}
